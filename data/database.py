@@ -54,6 +54,10 @@ class Database:
 
         self.conn.commit()
 
+    def get_bike_ids(self):
+        self.cursor.execute(f"SELECT bike_id FROM trips GROUP BY bike_id ORDER BY count(*)")
+        return self.cursor.fetchall()
+
     def get_trips_of_bike(self, bike_id: int):
         self.cursor.execute(f"SELECT * FROM trips WHERE bike_id = {bike_id}")
         return self.cursor.fetchall()
