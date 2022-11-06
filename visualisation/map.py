@@ -20,7 +20,6 @@ hex_radius = st.sidebar.slider('Select a radius for the hexagons', 1, 100, 10)
 bike_ids = db.get_bike_ids()
 query_bike_id = st.sidebar.selectbox('Select bike id:', [i[0] for i in bike_ids])
 
-print(query_bike_id)
 trips = db.get_trips_of_bike(query_bike_id)
 
 routes = get_dataframe(trips[0])
@@ -77,6 +76,10 @@ scatterplot_layer = pdk.Layer(
 
 map_layers = [scatterplot_layer, line_layer]
 
+tooltip = {"html": f"&#128690 {{bike_id}} <br> &#128197 {{start_time}} <br> &#128337 {{duration}} Minuten <br>  &#x2194  {{distance}} km",
+           "style": {"color": "white", "border-radius": "6px", "border-style:": "solid", "border-width": "1px", "opacity": "0.95"}}
+
+
 st.pydeck_chart(pdk.Deck(
     map_style=map_styles[map_style],
     initial_view_state=pdk.ViewState(
@@ -87,5 +90,4 @@ st.pydeck_chart(pdk.Deck(
         pickable=True,
     ),
     layers=map_layers,
-    tooltip={"html": f"&#128690 {{bike_id}} <br> &#128197 {{start_time}} <br> &#128337 {{duration}} Minuten <br>  &#x2194  {{distance}} km", "style": {"color": "white"}}
-))
+    tooltip=tooltip))
