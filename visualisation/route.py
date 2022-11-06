@@ -5,7 +5,6 @@ from datetime import datetime
 import warnings
 
 api_key = os.environ.get('ORS_API_KEY')
-api_key = '5b3ce3597851110001cf62489cc33275fcde43b994eade7aeb105fbd'
 
 
 def get_route(start_latitude, start_longitude, end_latitude, end_longitude):
