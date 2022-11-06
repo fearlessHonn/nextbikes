@@ -6,7 +6,7 @@ from trip import Trip
 
 
 class Database:
-    def __init__(self, path='new_data.db'):
+    def __init__(self, path='bike_data.db'):
         self.path = path
         self.conn = sqlite3.connect(self.path)
         self.cursor = self.conn.cursor()
@@ -53,3 +53,7 @@ class Database:
                 {trip.end_time}, {trip.end_location.lat}, {trip.end_location.lng}, '{trip.end_location.name}', {trip.end_location.uid})""")
 
         self.conn.commit()
+
+    def get_trips_of_bike(self, bike_id: int):
+        self.cursor.execute(f"SELECT * FROM trips WHERE bike_id = {bike_id}")
+        return self.cursor.fetchall()
