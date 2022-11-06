@@ -1,6 +1,6 @@
-from ZAK.location import Location, default_location
-from ZAK.trip import Trip
-from ZAK.timestamp import Timestamp
+from location import Location, default_location
+from trip import Trip
+from timestamp import Timestamp
 from database import Database
 from dataset import Dataset
 import requests

@@ -1,6 +1,6 @@
 import sqlite3
 import warnings
-from ZAK.dataset import Dataset
+from dataset import Dataset
 from location import Location
 from trip import Trip
 

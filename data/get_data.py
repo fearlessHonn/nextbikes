@@ -1,4 +1,4 @@
-from city import City
+from data.city import City
 from time import sleep
 
 
