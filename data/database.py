@@ -58,6 +58,10 @@ class Database:
         self.cursor.execute(f"SELECT bike_id FROM trips GROUP BY bike_id ORDER BY count(*)")
         return self.cursor.fetchall()
 
+    def trips_per_interval(self, interval: int):
+        self.cursor.execute(f"SELECT count(*), STRFTIME('%H:%M', start_time) from trips GROUP BY cast(STRFTIME('%s', start_time) / {interval} as int) * {interval}")
+        return self.cursor.fetchall()
+
     def get_trips_of_bike(self, bike_id: int):
         self.cursor.execute(f"SELECT * FROM trips WHERE bike_id = {bike_id}")
         return self.cursor.fetchall()
