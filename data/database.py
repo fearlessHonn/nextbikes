@@ -65,3 +65,15 @@ class Database:
     def get_trips_of_bike(self, bike_id: int):
         self.cursor.execute(f"SELECT * FROM trips WHERE bike_id = {bike_id}")
         return self.cursor.fetchall()
+
+    def group_trips_by_duration(self):
+        self.cursor.execute("SELECT (STRFTIME('%s', end_time) - STRFTIME('%s', start_time)) / 60, count(*) FROM trips GROUP BY (STRFTIME('%s', end_time) - STRFTIME('%s', start_time)) / 60;")
+        return self.cursor.fetchall()
+
+    def get_num_of_trips(self):
+        self.cursor.execute("SELECT count(*) FROM trips")
+        return self.cursor.fetchone()[0]
+
+    def get_all_trips(self):
+        self.cursor.execute("SELECT start_lat, start_lon FROM trips")
+        return self.cursor.fetchall()
