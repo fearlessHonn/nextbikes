@@ -11,3 +11,12 @@ map_styles = {
 
 color1 = [211, 83, 12]  # D38312
 color2 = [168, 32, 79]  # A83279
+
+
+def get_color(max_id):
+    return [
+        f"{color1[0]} + {color2[0] - color2[0]} * (id / {max_id})",
+        f"{color1[1]} + {color2[1] - color1[1]} * (id / {max_id})",
+        f"{color1[2]} + {color2[2] - color1[2]} * (id / {max_id})"
+        f"155 + 100 * (id / {max_id})"
+    ]
