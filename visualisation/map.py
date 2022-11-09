@@ -1,6 +1,6 @@
 import pydeck as pdk
-from route import get_dataframe
-from style import map_styles, get_color
+from visualisation.route import get_dataframe
+from visualisation.style import map_styles, get_color
 import pandas as pd
 import streamlit as st
 
@@ -10,7 +10,7 @@ from database import Database
 
 
 def display():
-    db = Database(path='../data/bike_data.db')
+    db = Database(path='data/bike_data.db')
 
     bike_ids = db.get_bike_ids()
     st.sidebar.header('Map')

@@ -13,7 +13,7 @@ def display():
     st.title('Number of trips throughout the day')
 
     # --- Get data ---
-    db = Database(path='../data/bike_data.db')
+    db = Database(path='data/bike_data.db')
     line_chart_data = db.trips_per_interval(interval)
     line_chart_data = pd.DataFrame(line_chart_data, columns=['trips', 'time'])
 

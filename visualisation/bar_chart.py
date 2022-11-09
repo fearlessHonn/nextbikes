@@ -10,7 +10,7 @@ def display():
     st.title('Duration of trips')
 
     # --- Get data ---
-    db = Database(path='../data/bike_data.db')
+    db = Database(path='data/bike_data.db')
     num_of_trips = db.get_num_of_trips()
     bar_chart_data = db.group_trips_by_duration()
     bar_chart_data = pd.DataFrame(bar_chart_data, columns=['duration in minutes', 'percentage of trips'])
