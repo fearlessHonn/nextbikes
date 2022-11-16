@@ -38,8 +38,9 @@ def display():
 
     st.sidebar.subheader('Layers:')
 
-    line_vis = 1 if st.sidebar.checkbox('Lines', value=True) else 0
-    hex_vis = 1 if st.sidebar.checkbox('Hexagons', value=True) else 0
+    line_vis = 1 if st.sidebar.checkbox('Lines', value=False) else 0
+    hex_vis = 1 if st.sidebar.checkbox('Hexagons', value=False) else 0
+    heat_vis = 0.7 if st.sidebar.checkbox('Heatmap', value=True) else 0
 
     if hex_vis:
         st.sidebar.subheader('Hexagons:')
@@ -84,7 +85,19 @@ def display():
         extruded=True,
         opacity=hex_vis)
 
-    map_layers = [hexagon_layer, scatterplot_layer, line_layer]
+    # --- Heatmap Layer ---
+
+    heatmap_layer = pdk.Layer(
+        'HeatmapLayer',
+        data=all_trips,
+        get_position='[longitude, latitude]',
+        threshold=0.05,
+        aggregation='MEAN',
+        weights_texture_size=512,
+        radius_pixels=50,
+        opacity=heat_vis)
+
+    map_layers = [heatmap_layer, hexagon_layer, scatterplot_layer, line_layer]
 
     tooltip = {
         "html": f"&#128690 {{bike_id}} <br> &#128197 {{start_time}} <br> &#128337 {{duration}} Minuten <br>  &#x2194  {{distance}} km",

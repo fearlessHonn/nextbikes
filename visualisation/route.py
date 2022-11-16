@@ -10,6 +10,7 @@ api_key = '5b3ce3597851110001cf62489cc33275fcde43b994eade7aeb105fbd'
 
 
 def get_route(start_latitude, start_longitude, end_latitude, end_longitude):
+    sleep(1.5)
     url = 'https://api.openrouteservice.org/v2/directions/cycling-regular/geojson'
     headers = {'Authorization': api_key}
     data = {"coordinates": [[start_longitude, start_latitude], [end_longitude, end_latitude]]}
@@ -21,7 +22,8 @@ def get_route(start_latitude, start_longitude, end_latitude, end_longitude):
 
     if 'error' in route.keys():
         if route['error'] == 'Rate limit exceeded':
-            sleep(.5)
+            sleep(5)
+            warnings.warn('Rate limit exceeded, waiting 5 seconds')
             return get_route(start_latitude, start_longitude, end_latitude, end_longitude)
         warnings.warn('Error in route generation!')
         return [], 0
