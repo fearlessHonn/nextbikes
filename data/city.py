@@ -1,8 +1,8 @@
-from location import Location, default_location
-from trip import Trip
-from timestamp import Timestamp
-from database import Database
-from dataset import Dataset
+from data.location import Location, default_location
+from data.trip import Trip
+from data.timestamp import Timestamp
+from data.database import Database
+from data.dataset import Dataset
 import requests
 import datetime
 import warnings
