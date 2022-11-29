@@ -1,8 +1,8 @@
 import sqlite3
 import warnings
-from dataset import Dataset
-from location import Location
-from trip import Trip
+from data.dataset import Dataset
+from data.location import Location
+from data.trip import Trip
 
 
 class Database:

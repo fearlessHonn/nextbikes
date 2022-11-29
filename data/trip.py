@@ -1,4 +1,4 @@
-from location import Location
+from data.location import Location
 
 
 class Trip:

@@ -3,10 +3,7 @@ from visualisation.route import get_dataframe
 from visualisation.style import map_styles, get_color
 import pandas as pd
 import streamlit as st
-
-import sys
-sys.path.append('C:/Users/henlu/PycharmProjects/nextbikes/data')
-from database import Database
+from data.database import Database
 
 
 def display():
