@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
-import sys
-
-sys.path.append('C:/Users/henlu/PycharmProjects/nextbikes/data')
-from database import Database
+from data.database import Database
 
 
 def display():
